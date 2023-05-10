@@ -27,4 +27,15 @@ describe('Add a pokemon', () => {
     cy.get('[src="' + imageUrl + '"]').should('exist');
     cy.contains('MY NEW POKEMON')
   })
+
+  it('Should forbid pokemon creation if no image', () => {
+    cy.visit('/')
+
+    cy.get('[formcontrolname="name"]').type('MY NEW POKEMON');
+    cy.get('[formcontrolname="supertype"]').type('custom');
+    cy.get('form [type="submit"]').click();
+
+    cy.contains('ATTENTION VALEURS INVALIDES').should('exist');
+    cy.contains('MY NEW POKEMON').should('not.exist')
+  })
 })
