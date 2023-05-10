@@ -1,7 +1,7 @@
 describe('Home page', () => {
   it('Visits the initial project page', () => {
     cy.visit('/')
-    cy.contains('Liste des noms :')
+    cy.contains('Liste des pokemons :')
   })
 
 
@@ -18,8 +18,13 @@ describe('Add a pokemon', () => {
   it('Should add new pokemon to list', () => {
     cy.visit('/')
 
-    
+    const imageUrl = 'https://www.rd.com/wp-content/uploads/2019/09/GettyImages-621924830-scaled.jpg';
+    cy.get('[formcontrolname="name"]').type('MY NEW POKEMON');
+    cy.get('[formcontrolname="imageUrl"]').type(imageUrl);
+    cy.get('[formcontrolname="supertype"]').type('custom');
+    cy.get('form [type="submit"]').click();
 
-    cy.contains('Togekiss')
+    cy.get('[src="' + imageUrl + '"]').should('exist');
+    cy.contains('MY NEW POKEMON')
   })
 })
