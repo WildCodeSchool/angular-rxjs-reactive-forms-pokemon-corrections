@@ -22,6 +22,11 @@ form {
         cursor: pointer;
         transition: transform .5s;
         font-style: italic;
+
+        img {
+            max-width: 20rem;
+        }
+
         .name {
             font-style: normal;
             font-weight: bold;
