@@ -2,7 +2,7 @@ form {
     display: grid;
     grid-template-columns: 10rem 20rem;
 
-    > * {
+    >* {
         margin-bottom: .3em;
     }
 
@@ -15,12 +15,17 @@ form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    > div {
+
+    >div {
         text-align: center;
-        font-weight: bold;
         margin: 1rem;
         cursor: pointer;
         transition: transform .5s;
+        font-style: italic;
+        .name {
+            font-style: normal;
+            font-weight: bold;
+        }
 
         &:hover {
             transform: scale(1.15);

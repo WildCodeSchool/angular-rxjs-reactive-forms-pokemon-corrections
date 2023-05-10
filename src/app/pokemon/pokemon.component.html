@@ -37,8 +37,9 @@
 <div class="pokemons">
     <div *ngFor="let p of pokemons | async">
 
-        {{ p.name }} <br />
-        <img src="{{p.imageUrl}}" />
+        <span class="name">{{ p.name }}</span> <br />
+        <img src="{{p.imageUrl}}" /> <br />
+        {{ p.supertype }} 
 
     </div>
 </div>
