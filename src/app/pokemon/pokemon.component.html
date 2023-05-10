@@ -1,35 +1,45 @@
 <h1>Ajouter un pokemon</h1>
 
 <div *ngIf="!form.valid" style="background-color: red;">
-ATTENTION VALEURS INVALIDES
+    ATTENTION VALEURS INVALIDES
 </div>
 
-<form [formGroup]="form" (ngSubmit)="sendForm()"> 
+<form [formGroup]="form" (ngSubmit)="sendForm()">
 
-    Name: 
+    <span>
+        Name:
+    </span>
     <input formControlName="name" />
-<br />
 
-Image URL: 
-<input formControlName="imageUrl" />
+    <span>
+        Image URL:
+    </span>
+    <div>
+        <input formControlName="imageUrl" />
 
-<div *ngIf="form.get('imageUrl')?.hasError('required')" style="background-color: red;">
-    attention il faut une image pour ce pokemon
-</div>
+        <div *ngIf="form.get('imageUrl')?.hasError('required')" style="background-color: red;">
+            attention il faut une image pour ce pokemon
+        </div>
+    </div>
 
-<br />
+    <span>
+        Supertype:
+    </span>
+    <input formControlName="supertype" />
 
-Supertype: 
-<input formControlName="supertype" />
-<br />
-
-    <input type="submit" value="Go" />
+    <div></div>
+    <div>
+        <input type="submit" value="Go" />
+    </div>
 </form>
 
-<h1>Liste des noms : </h1>
-<div *ngFor="let p of pokemons | async" >
+<h1>Liste des pokemons : </h1>
+<div class="pokemons">
+    <div *ngFor="let p of pokemons | async">
 
-    {{ p.name }}
+        <span class="name">{{ p.name }}</span> <br />
+        <img src="{{p.imageUrl}}" /> <br />
+        {{ p.supertype }} 
 
-
+    </div>
 </div>
